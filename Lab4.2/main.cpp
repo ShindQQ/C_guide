@@ -35,7 +35,6 @@ int main()
 
 	for (int i = 0; i < strlen(string); i++)
 	{
-
 		if (string[i] > 48 && string[i] < 58)
 		{
 			num = string[i] - 48;
