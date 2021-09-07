@@ -32,7 +32,6 @@ int main()
 	printf("Enter sentence: ");
 	fgets(string, STRING_SIZE, stdin);
 
-
 	for (int i = 0; i < strlen(string); i++)
 	{
 		if (string[i] > 48 && string[i] < 58)
