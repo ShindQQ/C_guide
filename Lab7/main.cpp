@@ -47,12 +47,12 @@ int main(int argc, char* argv[])
 	SetConsoleOutputCP(1251);
 
 	if (argc < 2) {
-		printf("Введіть назву файла: ");
+		printf("Enter filename: ");
 		do {
 			fgets(filename_input, 256, stdin);
 			if (filename_input[0] == '\n')
 			{
-				printf("Текст не повинен бути пустим, спробуйте ще раз: ");
+				printf("You entered empty string: ");
 			}
 		} while (filename_input[0] == '\n');
 		filename_input[strlen(filename_input) - 1] = ' ';
@@ -64,7 +64,7 @@ int main(int argc, char* argv[])
 
 	if ((fp = fopen(filename_input, "r")) == NULL)
 	{
-		printf("Помилка відкриття файлу %s!\n", filename_input);
+		printf("Mistake with opening file %s!\n", filename_input);
 		return 1;
 	}
 
@@ -76,7 +76,7 @@ int main(int argc, char* argv[])
 	{
 		if (fscanf(fp, "%s %s %s %d", students[i].surname, students[i].name, students[i].patronymic, &students[i].lives) != 4)
 		{
-			printf("Помилка зчитки з файлу %s!\n", filename_input);
+			printf("Mistake reading file %s!\n", filename_input);
 			fclose(fp);
 			return 1;
 		}
@@ -86,12 +86,12 @@ int main(int argc, char* argv[])
 
 	fp = fopen(filename_output, "w+");
 
-	printf("Зчитанні дані з файлу:\n");
+	printf("Students read from file:\n");
 	print(students, count);
 
 	students = Sort(students, count);
 
-	printf("Відсортовані дані з файлу:\n");
+	printf("Sorted students:\n");
 	print(students, count);
 
 	for (int i = 0; i < count; i++)
@@ -162,11 +162,11 @@ void print(Students* students, int count)
 		printf("%s %s %s ", students[i].surname, students[i].name, students[i].patronymic);
 		if (students[i].lives == 0)
 		{
-			printf("Не проживає\n");
+			printf("Leaves in hostel\n");
 		}
 		else
 		{
-			printf("Проживає\n");
+			printf("Doesn`t live\n");
 		}
 	}
 }
